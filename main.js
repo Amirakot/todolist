@@ -1,6 +1,6 @@
 let input = document.querySelector("input");
 let ul = document.querySelector("ul");
-let html="";
+let completed=true;
 let form = document.querySelector(".form");
 form.addEventListener('submit',
 function (e) {
@@ -9,7 +9,7 @@ function (e) {
       alert("you shoud add task");
     }
     else{
-   ul.innerHTML += `<div class="displayy"><li>${input.value}</li><button class="btnn delete" onclick="deleteitem()">remove</button></div>`;
+   ul.innerHTML += `<div class="displayy"><li class="listli">${input.value}</li><button class="btnn delete" onclick="deleteitem()">remove</button></div>`;
 
 
    var current_tasks = document.querySelectorAll(".delete");
@@ -19,11 +19,26 @@ function (e) {
        this.parentNode.remove();
        console.log(this);
      };
-   }
+    
     }
+     var list = document.querySelectorAll(".listli");
+     console.log(list);
+     for (i = 0; i < list.length; i++) {
+       if (completed) {
+         list[i].onclick = function () {
+           console.log(this);
+           this.style = "text-decoration: line-through";
+          
+         };
+       } 
+       }
+     }
       input.value = "";
 }
+
+
 )
+
 
 function deleteitem(index){
  
